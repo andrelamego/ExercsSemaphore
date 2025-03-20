@@ -18,17 +18,19 @@ public class Carro extends Thread {
 	}
 
 	private void voltas() {
-		int tempoVolta;
+		double tempoVolta;
 		double menorTempo = 0;
 
 		for (int i = 0; i < 3; i++) {
-			tempoVolta = (int) (Math.random() * 3000) + 3000;
-
+			tempoVolta =(int) (Math.random() * 3000) + 3000;
+			
 			try {
-				sleep(tempoVolta);
+				sleep((int) tempoVolta);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
+			System.out.println("Carro #"+id+" | Escuderia: "+escuderia+" | "+(i+1)+"º volta: "+(tempoVolta/1000)+"s.");
 
 			if (menorTempo == 0) {
 				menorTempo = tempoVolta;
@@ -37,7 +39,7 @@ public class Carro extends Thread {
 			}
 		}
 		
-		System.out.println("Carro #"+id+" | Escuderia: "+escuderia+" | Menor volta: "+(menorTempo / 1000)+"s.");
+		//System.out.println("Carro #"+id+" | Escuderia: "+escuderia+" | Menor volta: "+(menorTempo / 1000)+"s.");
 		
 		//System.out.println(ordemChegada);
 		armazenar(menorTempo, ordemChegada);
